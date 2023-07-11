@@ -1,0 +1,10 @@
+.styled-title {
+  color: #FFF;
+  display: flex;
+  justify-content: center;
+  font-family: Roboto;
+  font-size: 65px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
