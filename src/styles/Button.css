@@ -1,0 +1,15 @@
+.render-button {
+  background: #3590F5;
+  border-radius: 100px;
+  color: #fff;
+  flex-shrink: 0;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  height: 55px;
+  justify-content: center;
+  align-items: center;
+  line-height: normal;
+  width: 256px;
+}
