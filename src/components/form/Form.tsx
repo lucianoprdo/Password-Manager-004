@@ -82,7 +82,10 @@ function Form({ initialFormValues, setShowForm }: FormProps) {
           <p className={ getPasswordValidationClass(formValues.senha.length >= 8) }>
             Possuir 8 ou mais caracteres
           </p>
-          <p className={ getPasswordValidationClass(formValues.senha.length <= 16) }>
+          <p
+            className={ getPasswordValidationClass(formValues
+              .senha.length >= 8 && formValues.senha.length <= 16) }
+          >
             Possuir até 16 caracteres
           </p>
           <p className={ getPasswordValidationClass(/(?=.*[a-zA-Z])(?=.*[0-9])/.test(formValues.senha)) }>
