@@ -57,6 +57,15 @@ h1 {
   font-weight: 700;
 }
 
+.password-validation {
+  display: block;
+  justify-content: space-around;
+}
+
+.styled-form {
+  display: grid;
+  justify-content: center;
+}
 
 .valid-password-check {
   color: #aeffb6;
@@ -64,4 +73,9 @@ h1 {
 
 .invalid-password-check {
   color: #f58989;
+}
+
+fieldset {
+  background-color: rgba(128, 128, 128, 0.219);
+  width: 507px;
 }

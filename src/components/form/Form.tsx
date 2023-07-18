@@ -3,12 +3,12 @@ import type { FormValuesTypes } from '../../App';
 import '../../styles/Form.css';
 
 type FormProps = {
-  initialFormValues: FormValuesTypes,
-  setShowForm: any,
+  initialFormValues: FormValuesTypes;
+  setShowForm: any;
 };
 
 function Form({ initialFormValues, setShowForm }: FormProps) {
-  const { nome, login, senha, url } = initialFormValues;
+  // const { nome, login, senha, url } = initialFormValues;
 
   const [formValues, setFormValues] = useState<FormValuesTypes>(initialFormValues);
 
@@ -37,6 +37,10 @@ function Form({ initialFormValues, setShowForm }: FormProps) {
     setShowForm(false);
   };
 
+  function getPasswordValidationClass(condition: any) {
+    return condition ? 'valid-password-check' : 'invalid-password-check';
+  }
+
   return (
     <form className="styled-form">
       <label className="form-label">
@@ -47,6 +51,7 @@ function Form({ initialFormValues, setShowForm }: FormProps) {
           className="input-style"
           value={ formValues.nome }
           onChange={ handleInputChange }
+          required
         />
       </label>
       <label className="form-label">
@@ -57,6 +62,7 @@ function Form({ initialFormValues, setShowForm }: FormProps) {
           className="input-style"
           value={ formValues.login }
           onChange={ handleInputChange }
+          required
         />
       </label>
       <label className="form-label">
@@ -67,8 +73,27 @@ function Form({ initialFormValues, setShowForm }: FormProps) {
           className="input-style"
           value={ formValues.senha }
           onChange={ handleInputChange }
+          required
         />
       </label>
+      <br />
+      <fieldset>
+        <div className="password-validation">
+          <p className={ getPasswordValidationClass(formValues.senha.length >= 8) }>
+            Possuir 8 ou mais caracteres
+          </p>
+          <p className={ getPasswordValidationClass(formValues.senha.length <= 16) }>
+            Possuir até 16 caracteres
+          </p>
+          <p className={ getPasswordValidationClass(/(?=.*[a-zA-Z])(?=.*[0-9])/.test(formValues.senha)) }>
+            Possuir letras e números
+          </p>
+          <p className={ getPasswordValidationClass(/[!@#$%^&*]/.test(formValues.senha)) }>
+            Possuir algum caractere especial
+          </p>
+        </div>
+      </fieldset>
+
       <label className="form-label">
         <p className="input-names">URL</p>
         <input
@@ -77,6 +102,7 @@ function Form({ initialFormValues, setShowForm }: FormProps) {
           className="input-style"
           value={ formValues.url }
           onChange={ handleInputChange }
+          required
         />
       </label>
       <br />
@@ -91,6 +117,7 @@ function Form({ initialFormValues, setShowForm }: FormProps) {
         </button>
       </div>
     </form>
+
   );
 }
 
