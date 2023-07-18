@@ -1,14 +1,3 @@
-/* .styled-form {
-  align-items: center;
-  background: #1e2029;
-  border-radius: 10px;
-  flex-shrink: 0;
-  height: 412px;
-  width: 100%;
-  display: flex-box;
-  justify-content: right;
-} */
-
 .input-style {
   align-items: center;
   background: #3b3f50;
@@ -26,8 +15,8 @@
 
 .form-btn {
   background: #3590f5;
-  color: #fff;
   border-radius: 100px;
+  color: #fff;
   display: inline-flexbox;
   flex-shrink: 0;
   font-size: 18px;
@@ -36,9 +25,9 @@
 }
 
 .form-btn-cancel {
-  display: inline-flexbox;
   border-radius: 100px;
   color: #3590f5;
+  display: inline-flexbox;
   flex-shrink: 0;
   font-size: 18px;
   font-style: normal;

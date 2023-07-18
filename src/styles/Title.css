@@ -1,8 +1,7 @@
 .styled-title {
-  color: white;
-  display: flex;
   align-items: center;
-  justify-content: center;
+  color: #fff;
+  display: flex;
   font-size: 65px;
   font-style: normal;
   font-weight: 900px;
