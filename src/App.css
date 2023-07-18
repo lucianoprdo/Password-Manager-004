@@ -29,7 +29,7 @@ header {
 
 button {
   background-color: white;
-  border: 1px solid rgb(34, 34, 34);
+  border: 1px solid #000000da;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1.5rem;
@@ -38,8 +38,8 @@ button {
 }
 
 button:hover {
-  background-color: rgb(241, 241, 241);
-  color: black;
+  background-color: white;
+  color: #000000da;
 }
 
 button:focus {
@@ -48,8 +48,8 @@ button:focus {
 }
 
 .buttons-container {
-  display: flex;
   align-items: start;
+  display: flex;
 }
 
 h1 {
