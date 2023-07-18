@@ -11,6 +11,7 @@ function Form({ initialFormValues, setShowForm }: FormProps) {
   // const { nome, login, senha, url } = initialFormValues;
 
   const [formValues, setFormValues] = useState<FormValuesTypes>(initialFormValues);
+  const [isPasswordClicked, setIsPasswordClicked] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -19,6 +20,10 @@ function Form({ initialFormValues, setShowForm }: FormProps) {
       ...prevFormValues,
       [name]: value,
     }));
+  };
+
+  const handlePasswordClick = () => {
+    setIsPasswordClicked(true);
   };
 
   const isFormValid = (
@@ -73,29 +78,33 @@ function Form({ initialFormValues, setShowForm }: FormProps) {
           className="input-style"
           value={ formValues.senha }
           onChange={ handleInputChange }
+          onClick={ handlePasswordClick }
           required
         />
       </label>
       <br />
-      <fieldset>
-        <div className="password-validation">
-          <p className={ getPasswordValidationClass(formValues.senha.length >= 8) }>
-            Possuir 8 ou mais caracteres
-          </p>
-          <p
-            className={ getPasswordValidationClass(formValues
-              .senha.length >= 8 && formValues.senha.length <= 16) }
-          >
-            Possuir até 16 caracteres
-          </p>
-          <p className={ getPasswordValidationClass(/(?=.*[a-zA-Z])(?=.*[0-9])/.test(formValues.senha)) }>
-            Possuir letras e números
-          </p>
-          <p className={ getPasswordValidationClass(/[!@#$%^&*]/.test(formValues.senha)) }>
-            Possuir algum caractere especial
-          </p>
-        </div>
-      </fieldset>
+      {isPasswordClicked && (
+        <fieldset>
+          <div className="password-validation">
+            <p className={ getPasswordValidationClass(formValues.senha.length >= 8) }>
+              Possuir 8 ou mais caracteres
+            </p>
+            <p
+              className={ getPasswordValidationClass(
+                formValues.senha.length >= 8 && formValues.senha.length <= 16,
+              ) }
+            >
+              Possuir até 16 caracteres
+            </p>
+            <p className={ getPasswordValidationClass(/(?=.*[a-zA-Z])(?=.*[0-9])/.test(formValues.senha)) }>
+              Possuir letras e números
+            </p>
+            <p className={ getPasswordValidationClass(/[!@#$%^&*]/.test(formValues.senha)) }>
+              Possuir algum caractere especial
+            </p>
+          </div>
+        </fieldset>
+      )}
 
       <label className="form-label">
         <p className="input-names">URL</p>

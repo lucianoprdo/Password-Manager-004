@@ -39,12 +39,12 @@ describe('6 - Implemente a função do botão "cadastrar" do formulário', () =>
     vi.clearAllMocks();
   });
 
-  it.skip('Caso não exista nenhum serviço cadastrado, a mensagem "nenhuma senha cadastrada" deverá ser renderizada.', () => {
+  it('Caso não exista nenhum serviço cadastrado, a mensagem "nenhuma senha cadastrada" deverá ser renderizada.', () => {
     render(<App />);
     expect(screen.getByText(/nenhuma senha cadastrada/i)).toBeInTheDocument();
   });
 
-  it.skip('Ao clicar no botão, as informações enviadas pelo formulário deverão ser renderizadas na tela.', async () => {
+  it('Ao clicar no botão, as informações enviadas pelo formulário deverão ser renderizadas na tela.', async () => {
     vi.useFakeTimers();
     render(<App />);
 
@@ -59,7 +59,7 @@ describe('6 - Implemente a função do botão "cadastrar" do formulário', () =>
     expect(link).toHaveAttribute('href', validForm.url);
   });
 
-  it.skip('A aplicação deve renderizar todos os serviços cadastrados na ordem esperada.', async () => {
+  it('A aplicação deve renderizar todos os serviços cadastrados na ordem esperada.', async () => {
     vi.useFakeTimers();
     render(<App />);
 
@@ -83,7 +83,7 @@ describe('6 - Implemente a função do botão "cadastrar" do formulário', () =>
     expect(links[1]).toHaveAttribute('href', anotherValidForm.url);
   });
 
-  it.skip('Se algum serviço estiver cadastrado, a mensagem "nenhuma senha cadastrada" deverá desaparecer.', async () => {
+  it('Se algum serviço estiver cadastrado, a mensagem "nenhuma senha cadastrada" deverá desaparecer.', async () => {
     vi.useFakeTimers();
     render(<App />);
     registerPassword(validForm);
