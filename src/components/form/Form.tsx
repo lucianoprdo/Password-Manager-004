@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { FormValuesTypes } from '../../App';
 import '../../styles/Form.css';
 
@@ -10,7 +10,29 @@ type FormProps = {
 function Form({ initialFormValues, setShowForm }: FormProps) {
   const { nome, login, senha, url } = initialFormValues;
 
-  const handleButtonClick = (event: any) => {
+  const [formValues, setFormValues] = useState<FormValuesTypes>(initialFormValues);
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    setFormValues((prevFormValues) => ({
+      ...prevFormValues,
+      [name]: value,
+    }));
+  };
+
+  const isFormValid = (
+    formValues.nome.trim() !== ''
+    && formValues.login.trim() !== ''
+    && formValues.senha.trim() !== ''
+    && formValues.senha.length >= 8
+    && formValues.senha.length <= 16
+    && /[a-zA-Z]/.test(formValues.senha)
+    && /[0-9]/.test(formValues.senha)
+    && /[!@#$%^&*]/.test(formValues.senha)
+  );
+
+  const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setShowForm(false);
   };
@@ -23,7 +45,8 @@ function Form({ initialFormValues, setShowForm }: FormProps) {
           type="text"
           name="nome"
           className="input-style"
-          value={ nome }
+          value={ formValues.nome }
+          onChange={ handleInputChange }
         />
       </label>
       <label className="form-label">
@@ -32,7 +55,8 @@ function Form({ initialFormValues, setShowForm }: FormProps) {
           type="text"
           name="login"
           className="input-style"
-          value={ login }
+          value={ formValues.login }
+          onChange={ handleInputChange }
         />
       </label>
       <label className="form-label">
@@ -41,7 +65,8 @@ function Form({ initialFormValues, setShowForm }: FormProps) {
           type="password"
           name="senha"
           className="input-style"
-          value={ senha }
+          value={ formValues.senha }
+          onChange={ handleInputChange }
         />
       </label>
       <label className="form-label">
@@ -50,20 +75,18 @@ function Form({ initialFormValues, setShowForm }: FormProps) {
           type="text"
           name="url"
           className="input-style"
-          value={ url }
+          value={ formValues.url }
+          onChange={ handleInputChange }
         />
       </label>
       <br />
       <br />
       <div className="buttons-container">
-        <button className="form-btn">
+        <button className="form-btn" disabled={ !isFormValid }>
           Cadastrar
         </button>
         <br />
-        <button
-          onClick={ handleButtonClick }
-          className="form-btn-cancel"
-        >
+        <button onClick={ handleButtonClick } className="form-btn-cancel">
           Cancelar
         </button>
       </div>

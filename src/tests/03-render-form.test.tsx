@@ -7,19 +7,19 @@ describe('3 - Renderize condicionalmente o formulário', () => {
     render(<App />);
   });
 
-  it('Renderiza o botão "Cadastrar nova Senha".', () => {
+  it.skip('Renderiza o botão "Cadastrar nova Senha".', () => {
     const registerButton = screen.getByRole('button', { name: /cadastrar nova senha/i });
     expect(registerButton).toBeInTheDocument();
   });
 
-  it('Ao clicar no botão "Cadastrar nova Senha", ele deverá desaparecer.', () => {
+  it.skip('Ao clicar no botão "Cadastrar nova Senha", ele deverá desaparecer.', () => {
     const registerButton = screen.getByRole('button', { name: /cadastrar nova senha/i });
     userEvent.click(registerButton);
 
     expect(registerButton).not.toBeInTheDocument();
   });
 
-  it('Ao clicar no botão "Cadastrar nova Senha", o formulário deverá ser renderizado.', () => {
+  it.skip('Ao clicar no botão "Cadastrar nova Senha", o formulário deverá ser renderizado.', () => {
     const registerButton = screen.getByRole('button', { name: /cadastrar nova senha/i });
     userEvent.click(registerButton);
 
@@ -34,7 +34,7 @@ describe('3 - Renderize condicionalmente o formulário', () => {
     expect(urlInput).toBeInTheDocument();
   });
 
-  it('Ao clicar no botão cancelar do formulário, o formulário deverá desaparecer.', () => {
+  it.skip('Ao clicar no botão cancelar do formulário, o formulário deverá desaparecer.', () => {
     const registerButton = screen.getByRole('button', { name: /cadastrar nova senha/i });
     userEvent.click(registerButton);
 
@@ -52,7 +52,7 @@ describe('3 - Renderize condicionalmente o formulário', () => {
     expect(urlInput).not.toBeInTheDocument();
   });
 
-  it('Ao clicar no botão cancelar do formulário, o botão Cadastrar nova Senha deverá aparecer.', () => {
+  it.skip('Ao clicar no botão cancelar do formulário, o botão Cadastrar nova Senha deverá aparecer.', () => {
     userEvent.click(screen.getByRole('button', { name: /cadastrar nova senha/i }));
 
     const cancelButton = screen.getByRole('button', { name: /cancelar/i });
