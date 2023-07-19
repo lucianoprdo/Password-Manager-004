@@ -1,0 +1,11 @@
+.remove-btn {
+  background: #f58989;
+  border-radius: 100px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 18px;
+  height: 5px;
+  width: 21px;
+}

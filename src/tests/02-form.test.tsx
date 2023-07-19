@@ -13,7 +13,7 @@ describe('2 - Crie um componente Form', () => {
     }
   });
 
-  it.skip('Componente Form possui um input associado a uma label com o texto "Nome do Serviço".', () => {
+  it('Componente Form possui um input associado a uma label com o texto "Nome do Serviço".', () => {
     const serviceInput = screen.getByLabelText(/Nome do Serviço/i);
     expect(serviceInput).toBeInTheDocument();
     expect(serviceInput).toHaveAttribute('type', 'text');
@@ -22,7 +22,7 @@ describe('2 - Crie um componente Form', () => {
     expect(serviceInput).toHaveValue('Trybe Account');
   });
 
-  it.skip('Componente Form possui um input associado a uma label com o texto "Login".', () => {
+  it('Componente Form possui um input associado a uma label com o texto "Login".', () => {
     const loginInput = screen.getByLabelText(/Login/i);
     expect(loginInput).toBeInTheDocument();
     expect(loginInput).toHaveAttribute('type', 'text');
@@ -31,7 +31,7 @@ describe('2 - Crie um componente Form', () => {
     expect(loginInput).toHaveValue('tryber@email.com');
   });
 
-  it.skip('Componente Form possui um input associado a uma label com o texto "Senha".', () => {
+  it('Componente Form possui um input associado a uma label com o texto "Senha".', () => {
     const passwordInput = screen.getByLabelText(/^Senha/i);
     expect(passwordInput).toBeInTheDocument();
     expect(passwordInput).toHaveAttribute('type', 'password');
@@ -40,7 +40,7 @@ describe('2 - Crie um componente Form', () => {
     expect(passwordInput).toHaveValue('myPassword');
   });
 
-  it.skip('Componente Form possui um input associado a uma label com o texto "URL".', () => {
+  it('Componente Form possui um input associado a uma label com o texto "URL".', () => {
     const urlInput = screen.getByLabelText(/url/i);
     expect(urlInput).toBeInTheDocument();
     expect(urlInput).toHaveAttribute('type', 'text');
@@ -49,12 +49,12 @@ describe('2 - Crie um componente Form', () => {
     expect(urlInput).toHaveValue('https://app.betrybe.com/login');
   });
 
-  it.skip('Componente Form possui um botão com texto "Cadastrar".', () => {
+  it('Componente Form possui um botão com texto "Cadastrar".', () => {
     const submitButton = screen.getByRole('button', { name: /Cadastrar/i });
     expect(submitButton).toBeInTheDocument();
   });
 
-  it.skip('Componente Form possui um botão com o texto "Cancelar".', () => {
+  it('Componente Form possui um botão com o texto "Cancelar".', () => {
     const cancelButton = screen.getByRole('button', { name: /Cancelar/i });
     expect(cancelButton).toBeInTheDocument();
   });

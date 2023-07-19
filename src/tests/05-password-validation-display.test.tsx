@@ -13,7 +13,7 @@ describe('5 - Crie um display para a validação da senha', () => {
     userEvent.click(registerButton);
   });
 
-  it.skip('Renderizar a mensagem "Possuir 8 ou mais caracteres" com a classe "valid-password-check" caso a senha possua 8 ou mais caracteres.', () => {
+  it('Renderizar a mensagem "Possuir 8 ou mais caracteres" com a classe "valid-password-check" caso a senha possua 8 ou mais caracteres.', () => {
     const passwordInput = screen.getByLabelText(/^Senha/i);
     userEvent.type(passwordInput, validForm.password);
 
@@ -21,7 +21,7 @@ describe('5 - Crie um display para a validação da senha', () => {
     expect(message).toHaveClass(passwordClass.valid);
   });
 
-  it.skip('Renderizar a mensagem "Possuir 8 ou mais caracteres" com a classe "invalid-password-check" caso a senha possua menos de 8 caracteres.', () => {
+  it('Renderizar a mensagem "Possuir 8 ou mais caracteres" com a classe "invalid-password-check" caso a senha possua menos de 8 caracteres.', () => {
     const passwordInput = screen.getByLabelText(/^Senha/i);
     userEvent.type(passwordInput, smallPassword);
 
@@ -29,7 +29,7 @@ describe('5 - Crie um display para a validação da senha', () => {
     expect(message).toHaveClass(passwordClass.invalid);
   });
 
-  it.skip('Renderiza a mensagem "Possuir até 16 caracteres" com a classe "valid-password-check" caso a senha possua 16 caracteres ou menos.', () => {
+  it('Renderiza a mensagem "Possuir até 16 caracteres" com a classe "valid-password-check" caso a senha possua 16 caracteres ou menos.', () => {
     const passwordInput = screen.getByLabelText(/^Senha/i);
     userEvent.type(passwordInput, validForm.password);
 
@@ -37,7 +37,7 @@ describe('5 - Crie um display para a validação da senha', () => {
     expect(message).toHaveClass(passwordClass.valid);
   });
 
-  it.skip('Renderiza a mensagem "Possuir até 16 caracteres" com a classe "invalid-password-check" caso a senha possua mais de 16 caracteres.', () => {
+  it('Renderiza a mensagem "Possuir até 16 caracteres" com a classe "invalid-password-check" caso a senha possua mais de 16 caracteres.', () => {
     const passwordInput = screen.getByLabelText(/^Senha/i);
     userEvent.type(passwordInput, tooBigPassword);
 
@@ -45,7 +45,7 @@ describe('5 - Crie um display para a validação da senha', () => {
     expect(message).toHaveClass(passwordClass.invalid);
   });
 
-  it.skip('Renderiza a mensagem "Possuir letras e números" com a classe "valid-password-check" caso a senha possua letras e números.', () => {
+  it('Renderiza a mensagem "Possuir letras e números" com a classe "valid-password-check" caso a senha possua letras e números.', () => {
     const passwordInput = screen.getByLabelText(/^Senha/i);
     userEvent.type(passwordInput, validForm.password);
 
@@ -53,7 +53,7 @@ describe('5 - Crie um display para a validação da senha', () => {
     expect(message).toHaveClass(passwordClass.valid);
   });
 
-  it.skip('Renderiza a mensagem "Possuir letras e números" com a classe "invalid-password-check" caso a senha não possua letras e números.', () => {
+  it('Renderiza a mensagem "Possuir letras e números" com a classe "invalid-password-check" caso a senha não possua letras e números.', () => {
     const passwordInput = screen.getByLabelText(/^Senha/i);
     userEvent.type(passwordInput, noNumbersPassword);
 
@@ -61,7 +61,7 @@ describe('5 - Crie um display para a validação da senha', () => {
     expect(message).toHaveClass(passwordClass.invalid);
   });
 
-  it.skip('Renderiza a mensagem "Possuir algum caractere especial" com a classe "valid-password-check" caso a senha possua caractere especial.', () => {
+  it('Renderiza a mensagem "Possuir algum caractere especial" com a classe "valid-password-check" caso a senha possua caractere especial.', () => {
     const passwordInput = screen.getByLabelText(/^Senha/i);
     userEvent.type(passwordInput, validForm.password);
 
@@ -69,7 +69,7 @@ describe('5 - Crie um display para a validação da senha', () => {
     expect(message).toHaveClass(passwordClass.valid);
   });
 
-  it.skip('Renderiza a mensagem "Possuir algum caractere especial" com a classe "invalid-password-check" caso a senha não possua caractere especial.', () => {
+  it('Renderiza a mensagem "Possuir algum caractere especial" com a classe "invalid-password-check" caso a senha não possua caractere especial.', () => {
     const passwordInput = screen.getByLabelText(/^Senha/i);
     userEvent.type(passwordInput, noSpecialPassword);
 

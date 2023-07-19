@@ -103,3 +103,12 @@ fieldset {
   background-color: rgba(128, 128, 128, 0.219);
   width: 507px;
 }
+
+hr {
+  background: rgba(128, 128, 128, 0.219);
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+  border: 0;
+  height: 1px;
+  margin: 50px;
+  width: 40vw;
+}

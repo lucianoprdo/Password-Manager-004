@@ -8,7 +8,7 @@ describe('4 - Validar os campos do formulário', () => {
     render(<App />);
   });
 
-  it.skip('Botão "Cadastrar" deve estar desabilitado se nenhum campo do formulário for preenchido.', () => {
+  it('Botão "Cadastrar" deve estar desabilitado se nenhum campo do formulário for preenchido.', () => {
     const registerButton = screen.getByRole('button', { name: /cadastrar nova senha/i });
 
     userEvent.click(registerButton);
@@ -17,7 +17,7 @@ describe('4 - Validar os campos do formulário', () => {
     expect(submitButton).toBeDisabled();
   });
 
-  it.skip('Botão "Cadastrar" deve estar desabilitado caso o campo "Nome do Serviço" não esteja preenchido.', () => {
+  it('Botão "Cadastrar" deve estar desabilitado caso o campo "Nome do Serviço" não esteja preenchido.', () => {
     const registerButton = screen.getByRole('button', { name: /cadastrar nova senha/i });
 
     userEvent.click(registerButton);
@@ -34,7 +34,7 @@ describe('4 - Validar os campos do formulário', () => {
     expect(submitButton).toBeDisabled();
   });
 
-  it.skip('Botão deve estar desabilitado caso o campo "Login" não esteja preenchido.', () => {
+  it('Botão deve estar desabilitado caso o campo "Login" não esteja preenchido.', () => {
     const registerButton = screen.getByRole('button', { name: /cadastrar nova senha/i });
 
     userEvent.click(registerButton);
@@ -51,7 +51,7 @@ describe('4 - Validar os campos do formulário', () => {
     expect(submitButton).toBeDisabled();
   });
 
-  it.skip('Botão deve estar desabilitado caso a senha tenha menos de 8 caracteres.', () => {
+  it('Botão deve estar desabilitado caso a senha tenha menos de 8 caracteres.', () => {
     const registerButton = screen.getByRole('button', { name: /cadastrar nova senha/i });
 
     userEvent.click(registerButton);
@@ -70,7 +70,7 @@ describe('4 - Validar os campos do formulário', () => {
     expect(submitButton).toBeDisabled();
   });
 
-  it.skip('Botão deve estar desabilitado caso a senha tenha mais de 16 caracteres.', () => {
+  it('Botão deve estar desabilitado caso a senha tenha mais de 16 caracteres.', () => {
     const registerButton = screen.getByRole('button', { name: /cadastrar nova senha/i });
 
     userEvent.click(registerButton);
@@ -89,7 +89,7 @@ describe('4 - Validar os campos do formulário', () => {
     expect(submitButton).toBeDisabled();
   });
 
-  it.skip('Botão deve estar desabilitado caso a senha não contenha números.', () => {
+  it('Botão deve estar desabilitado caso a senha não contenha números.', () => {
     const registerButton = screen.getByRole('button', { name: /cadastrar nova senha/i });
 
     userEvent.click(registerButton);
@@ -108,7 +108,7 @@ describe('4 - Validar os campos do formulário', () => {
     expect(submitButton).toBeDisabled();
   });
 
-  it.skip('Botão deve estar desabilitado caso a senha não contenha letras.', () => {
+  it('Botão deve estar desabilitado caso a senha não contenha letras.', () => {
     const registerButton = screen.getByRole('button', { name: /cadastrar nova senha/i });
 
     userEvent.click(registerButton);
@@ -127,7 +127,7 @@ describe('4 - Validar os campos do formulário', () => {
     expect(submitButton).toBeDisabled();
   });
 
-  it.skip('Botão deve estar desabilitado caso a senha não contenha caracteres especiais.', () => {
+  it('Botão deve estar desabilitado caso a senha não contenha caracteres especiais.', () => {
     const registerButton = screen.getByRole('button', { name: /cadastrar nova senha/i });
 
     userEvent.click(registerButton);
@@ -146,7 +146,7 @@ describe('4 - Validar os campos do formulário', () => {
     expect(submitButton).toBeDisabled();
   });
 
-  it.skip('Botão deve estar habilitado caso todos os campos sejam preenchidos corretamente.', () => {
+  it('Botão deve estar habilitado caso todos os campos sejam preenchidos corretamente.', () => {
     const registerButton = screen.getByRole('button', { name: /cadastrar nova senha/i });
 
     userEvent.click(registerButton);
