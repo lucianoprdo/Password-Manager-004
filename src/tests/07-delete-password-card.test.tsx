@@ -35,12 +35,12 @@ describe('7 - Permita apagar um serviço cadastrado', () => {
     vi.advanceTimersByTime(1500);
   });
 
-  it.skip('Cada serviço cadastrado deverá possuir um botão com o atributo data-testid="remove-btn".', () => {
+  it('Cada serviço cadastrado deverá possuir um botão com o atributo data-testid="remove-btn".', () => {
     const removeButtons = screen.getAllByTestId(testId.removeButton);
     expect(removeButtons).toHaveLength(2);
   });
 
-  it.skip('Ao clicar no botão, o serviço correspondente deve ser removido.', () => {
+  it('Ao clicar no botão, o serviço correspondente deve ser removido.', () => {
     const removeButtons = screen.getAllByTestId(testId.removeButton);
 
     userEvent.click(removeButtons[0]);
@@ -49,7 +49,7 @@ describe('7 - Permita apagar um serviço cadastrado', () => {
     expect(screen.getByText(anotherValidForm.login)).toBeInTheDocument();
   });
 
-  it.skip('Se todos os serviços forem removidos, a mensagem "nenhuma senha cadastrada" deve ser renderizada.', () => {
+  it('Se todos os serviços forem removidos, a mensagem "nenhuma senha cadastrada" deve ser renderizada.', () => {
     const removeButtons = screen.getAllByTestId(testId.removeButton);
 
     userEvent.click(removeButtons[1]);
