@@ -120,7 +120,10 @@ function Form({ initialFormValues, setShowForm }: FormProps) {
       <br />
       <br />
       <div className="buttons-container">
-        <button className="form-btn" disabled={ !isFormValid }>
+        <button
+          className="form-btn"
+          disabled={ !isFormValid }
+        >
           Cadastrar
         </button>
         <br />
