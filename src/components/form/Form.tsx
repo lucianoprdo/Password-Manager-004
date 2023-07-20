@@ -15,6 +15,7 @@ function Form({ initialFormValues, setShowForm, handleAddService }: FormProps) {
   const [formValues, setFormValues] = useState<FormValuesTypes>(initialFormValues);
   const [isPasswordClicked, setIsPasswordClicked] = useState(false);
   const [services, setServices] = useState<FormValuesTypes[]>([]);
+  const [isPasswordChange, setIsPasswordChange] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -27,6 +28,10 @@ function Form({ initialFormValues, setShowForm, handleAddService }: FormProps) {
 
   const handlePasswordClick = () => {
     setIsPasswordClicked(true);
+  };
+
+  const handlePasswordChange = () => {
+    setIsPasswordChange(!isPasswordChange);
   };
 
   const isFormValid = (
@@ -100,7 +105,7 @@ function Form({ initialFormValues, setShowForm, handleAddService }: FormProps) {
         <label className="form-label">
           <p className="input-names">Senha</p>
           <input
-            type="password"
+            type={ isPasswordChange ? 'text' : 'password' }
             name="senha"
             className="input-style"
             value={ formValues.senha }
@@ -169,6 +174,17 @@ function Form({ initialFormValues, setShowForm, handleAddService }: FormProps) {
             type="button"
           >
             Cancelar
+          </button>
+
+          <br />
+
+          <button
+            className="form-btn-show-hide"
+            type="button"
+            data-testid="show-hide-form-password"
+            onClick={ handlePasswordChange }
+          >
+            {isPasswordChange ? 'Esconder Senha' : 'Mostrar Senha'}
           </button>
 
         </div>
