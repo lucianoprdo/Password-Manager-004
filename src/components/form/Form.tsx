@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import type { FormValuesTypes } from '../../App';
 import '../../styles/Form.css';
-import ServiceList from '../service-list/ServiceList';
 
 type FormProps = {
   initialFormValues: FormValuesTypes;
@@ -10,11 +9,8 @@ type FormProps = {
 };
 
 function Form({ initialFormValues, setShowForm, handleAddService }: FormProps) {
-  // const { nome, login, senha, url } = initialFormValues;
-
   const [formValues, setFormValues] = useState<FormValuesTypes>(initialFormValues);
   const [isPasswordClicked, setIsPasswordClicked] = useState(false);
-  const [services, setServices] = useState<FormValuesTypes[]>([]);
   const [isPasswordChange, setIsPasswordChange] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,127 +65,119 @@ function Form({ initialFormValues, setShowForm, handleAddService }: FormProps) {
     setShowForm(false);
   };
 
-  const handleRemoveService = (service: FormValuesTypes): void => {
-    const updatedServices = services.filter((item) => item.nome !== service.nome);
-    setServices(updatedServices);
-  };
-
   return (
-    <>
-      <ServiceList services={ services } handleRemoveService={ handleRemoveService } />
-      <form className="styled-form" onSubmit={ handleSubmit }>
-        <label className="form-label">
-          <p className="input-names">Nome do serviço</p>
-          <input
-            type="text"
-            name="nome"
-            className="input-style"
-            value={ formValues.nome }
-            onChange={ handleInputChange }
-            required
-          />
-        </label>
+    <form className="styled-form" onSubmit={ handleSubmit }>
+      <label className="form-label">
+        <p className="input-names">Nome do serviço</p>
+        <input
+          type="text"
+          name="nome"
+          className="input-style"
+          value={ formValues.nome }
+          onChange={ handleInputChange }
+          required
+        />
+      </label>
 
-        <label className="form-label">
-          <p className="input-names">Login</p>
-          <input
-            type="text"
-            name="login"
-            className="input-style"
-            value={ formValues.login }
-            onChange={ handleInputChange }
-            required
-          />
-        </label>
+      <label className="form-label">
+        <p className="input-names">Login</p>
+        <input
+          type="text"
+          name="login"
+          className="input-style"
+          value={ formValues.login }
+          onChange={ handleInputChange }
+          required
+        />
+      </label>
 
-        <label className="form-label">
-          <p className="input-names">Senha</p>
-          <input
-            type={ isPasswordChange ? 'text' : 'password' }
-            name="senha"
-            className="input-style"
-            value={ formValues.senha }
-            onChange={ handleInputChange }
-            onClick={ handlePasswordClick }
-            required
-          />
-        </label>
+      <label className="form-label">
+        <p className="input-names">Senha</p>
+        <input
+          type={ isPasswordChange ? 'text' : 'password' }
+          name="senha"
+          className="input-style"
+          value={ formValues.senha }
+          onChange={ handleInputChange }
+          onClick={ handlePasswordClick }
+          required
+        />
+      </label>
+
+      <br />
+      {isPasswordClicked && (
+        <fieldset>
+          <div className="password-validation">
+            <p className={ getPasswordValidationClass(formValues.senha.length >= 8) }>
+              Possuir 8 ou mais caracteres
+            </p>
+            <p
+              className={ getPasswordValidationClass(
+                formValues.senha.length >= 8 && formValues.senha.length <= 16,
+              ) }
+            >
+              Possuir até 16 caracteres
+            </p>
+            <p className={ getPasswordValidationClass(/(?=.*[a-zA-Z])(?=.*[0-9])/.test(formValues.senha)) }>
+              Possuir letras e números
+            </p>
+            <p className={ getPasswordValidationClass(/[!@#$%^&*]/.test(formValues.senha)) }>
+              Possuir algum caractere especial
+            </p>
+          </div>
+        </fieldset>
+      )}
+
+      <label className="form-label">
+        <p className="input-names">URL</p>
+        <input
+          type="text"
+          name="url"
+          className="input-style"
+          value={ formValues.url }
+          onChange={ handleInputChange }
+          required
+        />
+      </label>
+
+      <br />
+      <br />
+
+      <div className="buttons-container">
+        <button
+          className="form-btn"
+          name="cadastrar"
+          type="button"
+          disabled={ !isFormValid }
+          onClick={ handleButtonClick }
+        >
+          Cadastrar
+        </button>
 
         <br />
-        {isPasswordClicked && (
-          <fieldset>
-            <div className="password-validation">
-              <p className={ getPasswordValidationClass(formValues.senha.length >= 8) }>
-                Possuir 8 ou mais caracteres
-              </p>
-              <p
-                className={ getPasswordValidationClass(
-                  formValues.senha.length >= 8 && formValues.senha.length <= 16,
-                ) }
-              >
-                Possuir até 16 caracteres
-              </p>
-              <p className={ getPasswordValidationClass(/(?=.*[a-zA-Z])(?=.*[0-9])/.test(formValues.senha)) }>
-                Possuir letras e números
-              </p>
-              <p className={ getPasswordValidationClass(/[!@#$%^&*]/.test(formValues.senha)) }>
-                Possuir algum caractere especial
-              </p>
-            </div>
-          </fieldset>
-        )}
 
-        <label className="form-label">
-          <p className="input-names">URL</p>
-          <input
-            type="text"
-            name="url"
-            className="input-style"
-            value={ formValues.url }
-            onChange={ handleInputChange }
-            required
-          />
-        </label>
+        <button
+          className="form-btn-cancel"
+          name="cancelar"
+          onClick={ () => setShowForm(false) }
+          type="button"
+        >
+          Cancelar
+        </button>
 
         <br />
-        <br />
 
-        <div className="buttons-container">
-          <button
-            className="form-btn"
-            name="cadastrar"
-            type="button"
-            disabled={ !isFormValid }
-            onClick={ handleButtonClick }
-          >
-            Cadastrar
-          </button>
+        <button
+          className="form-btn-show-hide"
+          type="button"
+          data-testid="show-hide-form-password"
+          onClick={ handlePasswordChange }
+        >
+          {isPasswordChange ? 'Esconder Senha' : 'Mostrar Senha'}
+        </button>
 
-          <br />
-
-          <button
-            className="form-btn-cancel"
-            name="cancelar"
-            onClick={ () => setShowForm(false) }
-            type="button"
-          >
-            Cancelar
-          </button>
-
-          <br />
-
-          <button
-            className="form-btn-show-hide"
-            type="button"
-            data-testid="show-hide-form-password"
-            onClick={ handlePasswordChange }
-          >
-            {isPasswordChange ? 'Esconder Senha' : 'Mostrar Senha'}
-          </button>
-
-        </div>
-      </form>
-    </>
+      </div>
+    </form>
   );
 }
 

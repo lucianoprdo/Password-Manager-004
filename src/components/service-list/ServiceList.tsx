@@ -4,10 +4,11 @@ import type { FormValuesTypes } from '../../App';
 type ServiceListProps = {
   services: FormValuesTypes[];
   handleRemoveService: (service: FormValuesTypes) => void;
-  hidePasswords: boolean;
+  hidePasswords?: boolean | undefined;
 };
 
-function ServiceList({ services, handleRemoveService, hidePasswords }: ServiceListProps) {
+function ServiceList({
+  services, handleRemoveService, hidePasswords = false }: ServiceListProps) {
   if (services.length === 0) {
     return <p className="message">Nenhuma senha cadastrada 🔒</p>;
   }

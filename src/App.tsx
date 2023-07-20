@@ -1,5 +1,6 @@
 import './App.css';
 import { useState } from 'react';
+import Swal from 'sweetalert2';
 import Title from './components/title/Title';
 import Form from './components/form/Form';
 import ServiceList from './components/service-list/ServiceList';
@@ -11,7 +12,7 @@ export type FormValuesTypes = {
   url: string,
   button?: boolean,
   setShowForm?: any,
-  hidePasswords?: void,
+  hidePasswords?: boolean | undefined,
 };
 
 const initialFormValues = {
@@ -26,12 +27,20 @@ const initialFormValues = {
 
 function App() {
   const [showForm, setShowForm] = useState<boolean>(false);
-  const [services, setServices] = useState<FormValuesTypes[]>([]);
+  const [services, setServices] = useState<FormValuesTypes[]>([]); // Esse estado está duplicado
   const [hidePasswords, setHidePasswords] = useState<boolean>(false);
 
   const handleAddService = (service: FormValuesTypes) => {
     setServices((prevServices) => [...prevServices, service]);
     setShowForm(false);
+
+    // Mostra o alerta de sucesso com SweetAlert2
+    Swal.fire({
+      title: 'Serviço cadastrado com sucesso',
+      icon: 'success',
+      timer: 1500, // 1.5 segundos
+      timerProgressBar: true,
+    });
   };
 
   const handleRemoveService = (service: FormValuesTypes) => {
@@ -74,7 +83,7 @@ function App() {
       ) : (
         <ServiceList
           services={ services }
-          hidePasswords={ hidePasswords } // Passando a prop hidePasswords para o ServiceList
+          hidePasswords={ hidePasswords }
           handleRemoveService={ handleRemoveService }
         />
       )}
