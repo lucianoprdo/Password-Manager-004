@@ -11,6 +11,7 @@ export type FormValuesTypes = {
   url: string,
   button?: boolean,
   setShowForm?: any,
+  hidePasswords?: void,
 };
 
 const initialFormValues = {
@@ -20,11 +21,13 @@ const initialFormValues = {
   url: '',
   button: false,
   setShowForm: false,
+  hidePasswords: false,
 };
 
 function App() {
   const [showForm, setShowForm] = useState<boolean>(false);
   const [services, setServices] = useState<FormValuesTypes[]>([]);
+  const [hidePasswords, setHidePasswords] = useState<boolean>(false);
 
   const handleAddService = (service: FormValuesTypes) => {
     setServices((prevServices) => [...prevServices, service]);
@@ -36,9 +39,22 @@ function App() {
     setServices(updatedServices);
   };
 
+  const handleHidePasswords = () => {
+    setHidePasswords(!hidePasswords);
+  };
+
   return (
     <div className="app-container">
       <Title />
+      <label className="checkbox">
+        <input
+          type="checkbox"
+          checked={ hidePasswords }
+          onChange={ handleHidePasswords }
+        />
+        Esconder senhas
+      </label>
+
       { !showForm && (
         <button
           type="button"
@@ -48,6 +64,7 @@ function App() {
           Cadastrar nova senha
         </button>
       )}
+
       {showForm ? (
         <Form
           initialFormValues={ initialFormValues }
@@ -55,7 +72,11 @@ function App() {
           handleAddService={ handleAddService }
         />
       ) : (
-        <ServiceList services={ services } handleRemoveService={ handleRemoveService } />
+        <ServiceList
+          services={ services }
+          hidePasswords={ hidePasswords } // Passando a prop hidePasswords para o ServiceList
+          handleRemoveService={ handleRemoveService }
+        />
       )}
       <hr />
     </div>

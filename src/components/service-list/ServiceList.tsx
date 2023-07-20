@@ -4,9 +4,10 @@ import type { FormValuesTypes } from '../../App';
 type ServiceListProps = {
   services: FormValuesTypes[];
   handleRemoveService: (service: FormValuesTypes) => void;
+  hidePasswords: boolean;
 };
 
-function ServiceList({ services, handleRemoveService }: ServiceListProps) {
+function ServiceList({ services, handleRemoveService, hidePasswords }: ServiceListProps) {
   if (services.length === 0) {
     return <p className="message">Nenhuma senha cadastrada 🔒</p>;
   }
@@ -20,7 +21,7 @@ function ServiceList({ services, handleRemoveService }: ServiceListProps) {
             <span>{service.login}</span>
           </p>
           <p>
-            <span>{service.senha}</span>
+            {hidePasswords ? <span>******</span> : <span>{service.senha}</span>}
           </p>
           <button
             type="button"
