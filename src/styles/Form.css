@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue&family=Roboto:ital,wght@1,300&display=swap');
 .input-style {
   align-items: center;
   background: #3b3f50;
@@ -76,6 +77,8 @@
 }
 
 .div-container {
+  align-items: center;
+  display: flex;
   position: relative;
 }
 

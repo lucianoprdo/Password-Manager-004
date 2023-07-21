@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue&family=Roboto:ital,wght@1,500&display=swap');
+
 body {
   align-items: center;
   background: #272a37;
   display: flex;
   flex-direction: column;
+  font: roboto;
   justify-content: center;
   margin: 0;
 }
@@ -54,6 +57,7 @@ button:focus {
 .buttons-container {
   align-items: start;
   display: flex;
+  justify-content: space-around
 }
 
 h1 {
@@ -105,12 +109,14 @@ fieldset {
 }
 
 hr {
-  background: rgba(128, 128, 128, 0.219);
-  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+  background: #cacaca;
+  background-image: linear-gradient(to right, #ccc, #3590f5, #ccc);
   border: 0;
-  height: 1px;
+  flex-shrink: 0;
+  height: 2px;
   margin: 50px;
-  width: 40vw;
+  stroke-width: 3px;
+  width: 291px;
 }
 
 .checkbox {

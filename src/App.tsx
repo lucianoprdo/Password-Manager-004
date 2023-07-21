@@ -34,7 +34,6 @@ function App() {
     setServices((prevServices) => [...prevServices, service]);
     setShowForm(false);
 
-    // Mostra o alerta de sucesso com SweetAlert2
     Swal.fire({
       title: 'Serviço cadastrado com sucesso',
       icon: 'success',
